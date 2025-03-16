@@ -1,0 +1,283 @@
+/* --- CSS Variables & Custom Font --- */
+/* Using CSS Variables with fallbacks */
+:root {
+    --main-bg-color: #f0f0f0;
+    --accent-color: #007acc;
+    --font-family-custom: 'Roboto', Arial, sans-serif;
+    --nav-hover-scale: 1.1;
+  }
+  
+  /* --- Basic Reset and Typography --- */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: var(--font-family-custom, Arial, sans-serif);
+    line-height: 1.6;
+    padding: 1rem;
+  }
+  
+  /* --- Header with Flexbox Layout --- */
+  header {
+    background-color: color-mix(in srgb, var(--main-bg-color), #ffffff 50%);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 10dvh;
+  }
+  header h1 {
+    flex: 1;
+    text-align: center;
+    font-size: 1.8rem;
+  }
+  nav {
+    flex: 1;
+    text-align: right;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  nav li {
+    display: inline-block;
+    margin-left: 1rem;
+  }
+  nav a {
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s ease-in-out;
+  }
+  nav a:hover {
+    transform: scale(var(--nav-hover-scale));
+  }
+  
+  /* --- Repository Links Section with Animation --- */
+  #repo-links {
+    text-align: center;
+    padding: 0.5rem;
+    background-color: #e0e0e0;
+    animation: fadeIn 1s ease-in-out;
+  }
+  #repo-links a {
+    color: var(--accent-color);
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* --- Section Styling --- */
+  section {
+    padding: 2rem 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+  section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  /* Example using new selector :has() */
+  /* If a section contains a figure, add a left border */
+  section:has(figure) {
+    border-left: 4px solid var(--accent-color);
+  }
+  
+  /* --- Welcome Section --- */
+  #welcome figure {
+    margin: 0 auto;
+    text-align: center;
+  }
+  #welcome picture, #welcome img {
+    max-width: 300px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+    object-position: center;
+  }
+  #welcome figcaption {
+    margin-top: 1rem;
+    font-style: italic;
+  }
+  
+  /* --- About Section --- */
+  #about p {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+  
+  /* --- Skills Section --- */
+  #skills ul {
+    list-style: none;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  #skills li {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+  #skills progress {
+    vertical-align: middle;
+    width: 60%;
+    height: 20px;
+    margin-left: 1rem;
+  }
+  
+  /* --- Projects Section using Flexbox --- */
+  #projects article,
+  project-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  #projects figure,
+  project-card figure {
+    flex: 1 1 300px;
+    margin: 0;
+  }
+  #projects picture, #projects img,
+  project-card picture, project-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+  #projects section,
+  project-card section {
+    flex: 1 1 300px;
+    padding: 1rem;
+  }
+  
+  /* --- Contact Section --- */
+  #contact address {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-style: normal;
+  }
+  #contact form {
+    max-width: 600px;
+    margin: 1rem auto;
+  }
+  #contact form fieldset {
+    border: 1px solid #ccc;
+    padding: 1rem;
+  }
+  #contact form label {
+    display: block;
+    margin-top: 0.5rem;
+  }
+  #contact form input,
+  #contact form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+  }
+  #contact ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+  }
+  #contact li {
+    display: inline;
+    margin: 0 0.5rem;
+  }
+  
+  /* --- HW4 part2: HTML and CSS Only Validation   --- */
+  /* required showing */
+  #contact *:required {
+    border: 2px solid rgb(0, 0, 0);
+    background-color: lightyellow;
+  }
+  
+  /* user-invalid to show invalid input */
+  #contact form input:user-invalid,
+  #contact form textarea:user-invalid {
+    border: 2px solid red;
+    background-color: white;
+  }
+  
+  /* user-valid to show valid input */
+  #contact form input:user-valid,
+  #contact form textarea:user-valid {
+    border: 2px solid green;
+    background-color: white;
+  }
+  
+  /* Make the <span> block-level */
+  #contact form span {
+    display: block;
+    margin-bottom: 0.5rem; /* space after message area */
+  }
+  
+  /* user-invalid to display correct input */
+  #contact form input#intro-name:user-invalid + span::before {
+    content: "Please enter a valid name (1-50 characters) ✖.";
+    color: red;
+  }
+  #contact form input#intro-email:user-invalid + span::before {
+    content: "Please enter a valid email address ✖.";
+    color: red;
+  }
+  #contact form textarea:user-invalid + span::before {
+    content: "Required character at least 10 and at max 250 charactors! ✖";
+    color: red;
+  }
+  
+  
+  /* --- Footer --- */
+  footer {
+    background: var(--main-bg-color);
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  /* --- Custom Elements --- */
+  /* Styling for the project-card element */
+  project-card {
+    display: block;
+    border: 2px dashed blue;
+    padding: 10px;
+    margin: 10px 0;
+    transition: transform 0.3s ease-in-out;
+  }
+  project-card:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Styling for the portfolio-highlight element */
+  portfolio-highlight {
+    display: block;
+    border: 2px dotted green;
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin: 10px 0;
+    transition: background-color 0.3s ease;
+  }
+  portfolio-highlight:hover {
+    background-color: #e9ffe9;
+  }
+  
+  /* --- Media Queries for Responsive Design --- */
+  @media screen and (max-width: 600px) {
+    header, nav, section {
+      padding: 1rem;
+    }
+    #projects article,
+    project-card {
+      flex-direction: column;
+    }
+    nav li {
+      display: block;
+      margin: 0.5rem 0;
+    }
+  }
+  

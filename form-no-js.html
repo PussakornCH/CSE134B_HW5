@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pussakorn Chanpanichravee - Portfolio</title>
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon_io/favicon.ico" type="image/x-icon" />
+    <!-- External CSS: now located in /CSS/styles.css -->
+    <link rel="stylesheet" href="CSS/styles-for-Part2.css" />
+  </head>
+  <body>
+    <!-- Header: Name centered; Navigation on top right -->
+    <header>
+      <h1>Pussakorn Chanpanichravee</h1>
+      <nav>
+        <ul>
+          <li><a href="#welcome">Home</a></li>
+          <li><a href="#about">Learn More</a></li>
+          <li><a href="#skills">My Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Repository Links Section -->
+    <section id="repo-links">
+      <p>
+        Live Website: 
+        <a href="https://moss-portfolio-css.netlify.app/" target="_blank">Netlify</a> |
+        GitHub Repository: 
+        <a href="https://github.com/PussakornCH/CSE134B_HW3" target="_blank">GitHub</a>
+      </p>
+    </section>
+
+    <!-- Welcome Section with Responsive Image -->
+    <section id="welcome">
+      <figure>
+        <picture>
+          <!-- High resolution for desktops -->
+          <source media="(min-width: 900px)" srcset="images/Moss.jpg" type="image/jpeg" />
+          <!-- Medium resolution for tablets -->
+          <source media="(min-width: 600px)" srcset="images/Moss.jpg" type="image/jpeg" />
+          <!-- Fallback smaller image for phones -->
+          <img src="images/Moss.jpg" alt="Pussakorn Chanpanichravee" style="object-fit: cover; object-position: center;" />
+        </picture>
+        <figcaption>"Life is not about waiting for the storm to pass, but learning to dance in the rain."</figcaption>
+      </figure>
+    </section>
+
+    <!-- Learn More About Me Section -->
+    <section id="about">
+      <h2>Learn More About Me</h2>
+      <p>
+        Hi, I'm <strong>Pussakorn Chanpanichravee</strong>, a passionate and driven individual in the field of computer engineering.
+        I enjoy <em>creative problem solving</em> and constantly seek to innovate and improve.
+        With a keen interest in both technology and design, I strive to make a positive impact in every project I undertake.
+      </p>
+    </section>
+
+    <!-- My Skills Section -->
+    <section id="skills">
+      <h2>My Skills</h2>
+      <ul>
+        <li>C++ <progress value="80" max="100"></progress></li>
+        <li>Java <progress value="75" max="100"></progress></li>
+        <li>HTML/CSS <progress value="85" max="100"></progress></li>
+        <li>JavaScript <progress value="70" max="100"></progress></li>
+        <li>Git/GitHub <progress value="90" max="100"></progress></li>
+      </ul>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <p style="text-align: center;">Most recent projects:</p>
+      <!-- Using custom element "project-card" for one project -->
+      <project-card>
+        <figure>
+          <picture>
+            <source media="(min-width: 900px)" srcset="images/taskList.png" type="image/jpeg" />
+            <source media="(min-width: 600px)" srcset="images/taskList.png" type="image/jpeg" />
+            <img src="images/taskList.png" alt="Developer Journal Application" style="object-fit: cover; object-position: center;" />
+          </picture>
+        </figure>
+        <section>
+          <h3>Developer Journal Application</h3>
+          <p>
+            A web application designed for developers to track progress and collaborate efficiently.
+            It features interactive prototypes, a dynamic home page, and an intuitive note and search functionality.
+          </p>
+        </section>
+      </project-card>
+      
+      <!-- Another project as a standard article -->
+      <article>
+        <figure>
+          <picture>
+            <source media="(min-width: 900px)" srcset="images/carVersion2.jpg" type="image/jpeg" />
+            <source media="(min-width: 600px)" srcset="images/carVersion2.jpg" type="image/jpeg" />
+            <img src="images/carVersion2.jpg" alt="Line Following Robot" style="object-fit: cover; object-position: center;"/>
+          </picture>
+        </figure>
+        <section>
+          <h3>Line Following Robot</h3>
+          <p>
+            An autonomous robot that uses Arduino programming and robotics engineering to precisely follow lines.
+            This project improved performance and showcased strong teamwork and innovation.
+          </p>
+        </section>
+      </article>
+    </section>
+
+    <!-- Contact Me Section -->
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <address>
+        <p><strong>Phone:</strong> (415) 846-0827</p>
+        <p><strong>Address:</strong> 9450 Gilman Drive, La Jolla, CA 92092</p>
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:pchanpanichravee@ucsd.edu">pchanpanichravee@ucsd.edu</a>
+        </p>
+      </address>
+
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Send Me a Message</legend>
+          <label for="contact-name">Name:</label>
+          <input type="text" id="contact-name" name="contact-name" required />
+
+          <label for="contact-email">Email:</label>
+          <input type="email" id="contact-email" name="contact-email" required />
+
+          <label for="contact-message">Message:</label>
+          <textarea id="contact-message" name="contact-message" rows="4" required></textarea>
+          
+          <button type="submit">Submit</button>
+        </fieldset>
+      </form>
+      <ul>
+        <li><a href="https://github.com/PussakornCH" target="_blank">GitHub</a></li>
+        <li><a href="www.linkedin.com/in/pussakorn-chanpanichravee-13295129b" target="_blank">LinkedIn</a></li>
+      </ul>
+
+      <!-- HW4 Part2: HTML and CSS Only Validation -->
+      <form action="https://httpbin.org/post" method="POST">
+        <fieldset> 
+          <legend>Introduce Yourself</legend>
+  
+          <label for="intro-name">Name:</label>
+          <input type="text" id="intro-name" name="name" minlength="1" maxlength="50" required>
+          <span></span>
+      
+          <label for="intro-email">Email:</label>
+          <input type="email" id="intro-email" name="email" required>
+          <span></span>
+      
+          <label for="intro-message">Comments:</label>
+          <textarea id="intro-message" name="comments" rows="4" minlength="10" maxlength="250" required></textarea>
+          <span></span>
+      
+          <input type="hidden" name="possible_bot" value="true">
+      
+          <!-- We'll use these for messages in Parts 2 and 3 -->
+          <output id="error-message"></output>
+          <output id="info-message"></output>
+      
+          <button type="submit">Submit</button>
+        </fieldset>
+      </form>
+    </section>
+
+
+    
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Pussakorn Chanpanichravee. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
