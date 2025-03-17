@@ -245,6 +245,7 @@ footer {
   padding: 1rem;
 }
 
+/* --- ---------------------------------------------------------------------------------------------------  --- */
 /* --- HW5: Custom Elements --- */
 /* Styling for the project-card element */
 /* --- Layout for the Projects Section --- */
@@ -254,6 +255,14 @@ footer {
   row-gap: 1rem;             /* Space between rows */
   padding: 1rem;
   justify-items: center;     /* Center the cards horizontally */
+}
+
+#cards-container {
+  display: grid;
+  grid-template-columns: 1fr; /* one column layout */
+  row-gap: 1rem;             /* vertical spacing between cards */
+  justify-items: center;     /* center cards horizontally */
+  padding: 1rem;
 }
 
 /* --- Custom Properties for Project Cards --- */
@@ -317,6 +326,8 @@ project-card a {
 project-card a:hover {
   color: var(--accent-color-hover);
 }
+/* --- ---------------------------------------------------------------------------------------------------  --- */
+
 
 
 /* Styling for the portfolio-highlight element */

@@ -14,6 +14,9 @@ const errorOutput = document.getElementById("error-message");
 let form_errors = [];
 const formErrorsHiddenInput = document.getElementById("form-errors"); // your hidden field
 
+// HW5 Create the Sample Data and Save It to Local Storage
+initializeLocalData();
+
 
 // Part1: Validate the form
 
@@ -167,3 +170,113 @@ themeToggle.addEventListener("click", () => {
   // Update the button text to reflect the new state
   themeToggle.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
 });
+
+// HW5 Part 2: Load Local Data
+function initializeLocalData() {
+    // Only initialize if data isn't already stored
+    if (!localStorage.getItem("projects")) {
+      const currentDate = new Date().toISOString(); // Save date in ISO format
+      const sampleProjects = [
+        {
+          title: "Hackatron project",
+          imgSrc: "images/Hackatron_device.jpg",
+          altText: "The device that detect the surrounding at night",
+          description: "This project is the Hackatron project that I and my friend join to create the device that allow people to detect other people at night when there is little light to see. This device use Sonar and infralate detector as the detect device and can attact to your arm when people moving.",
+          link: "images/Hackatron_device.jpg",
+          date: currentDate
+        },
+        {
+          title: "Developer Journal Application",
+          imgSrc: "images/taskList.jpg",
+          altText: "taskList App",
+          description: "A web application designed for developers to track progress and collaborate efficiently. It features interactive prototypes, a dynamic home page, and an intuitive note and search functionality.",
+          link: "images/taskList.jpg",
+          date: currentDate
+        },
+        {
+          title: "Line Following Robot 1",
+          imgSrc: "images/carVersion1.jpg",
+          altText: "carVersion1_redTrack",
+          description: "An autonomous robot that uses Arduino programming and robotics engineering to precisely follow lines. This project improved performance and showcased strong teamwork and innovation with a red car.",
+          link: "images/carVersion1.jpg",
+          date: currentDate
+        },
+        {
+          title: "Line Following Robot 2",
+          imgSrc: "images/carVersion2.jpg",
+          altText: "carVersion1_blueTrack",
+          description: "An autonomous robot that uses Arduino programming and robotics engineering to precisely follow lines. This project improved performance and showcased strong teamwork and innovation with a blue car.",
+          link: "images/carVersion2.jpg",
+          date: currentDate
+        }
+      ];
+      // Save the array as a JSON string in localStorage
+      localStorage.setItem("projects", JSON.stringify(sampleProjects));
+    }
+}
+
+function populateCards(projects) {
+    const container = document.getElementById('cards-container');
+    container.innerHTML = ''; // Clear any existing cards
+
+    projects.forEach(project => {
+        const card = document.createElement('project-card');
+        card.innerHTML = `
+        <h3>${project.title}</h3>
+        <time datetime="${project.date}">${new Date(project.date).toLocaleDateString()}</time>
+        <picture>
+            <img src="${project.imgSrc}" alt="${project.altText}" />
+        </picture>
+        <p>${project.description}</p>
+        <a href="${project.link}" target="_blank" rel="noopener noreferrer">View Full Image</a>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// Add event listener to the "Load Local" button
+document.getElementById('load-local').addEventListener('click', () => {
+    const localData = localStorage.getItem("projects");
+    if (localData) {
+        const projects = JSON.parse(localData);
+        populateCards(projects);
+    } else {
+        console.error("No local data found.");
+    }
+});
+
+// Add event listener to the "Load Remote" button
+document.getElementById('load-remote').addEventListener('click', async () => {
+    const url = "https://api.jsonbin.io/v3/b/67d7d1698a456b7966775777"; // Replace with your actual JSONBin URL
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+      const jsonData = await response.json();
+      // Assuming the remote JSON has a structure like { record: [ ...projects... ] }
+      console.log(jsonData);
+      const projects = jsonData.record.record;
+      
+      // Clear the container before populating new cards
+      const container = document.getElementById('cards-container');
+      container.innerHTML = "";
+      
+      projects.forEach(project => {
+        const card = document.createElement("project-card");
+        card.innerHTML = `
+          <h3>${project.title}</h3>
+          <time datetime="${project.date}">${new Date(project.date).toLocaleDateString()}</time>
+          <picture>
+            <img src="${project.imgSrc}" alt="${project.altText}" />
+          </picture>
+          <p>${project.description}</p>
+          <a href="${project.link}" target="_blank" rel="noopener noreferrer">View Full Image</a>
+        `;
+        container.appendChild(card);
+      });
+    } catch (error) {
+      console.error("Error loading remote data:", error.message);
+    }
+});
+
