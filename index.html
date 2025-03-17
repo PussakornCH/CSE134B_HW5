@@ -71,45 +71,23 @@
       </ul>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <p style="text-align: center;">Most recent projects:</p>
-      <!-- Using custom element "project-card" for one project -->
-      <project-card>
-        <figure>
-          <picture>
-            <source media="(min-width: 900px)" srcset="images/taskList.png" type="image/jpeg" />
-            <source media="(min-width: 600px)" srcset="images/taskList.png" type="image/jpeg" />
-            <img src="images/taskList.png" alt="Developer Journal Application" style="object-fit: cover; object-position: center;" />
-          </picture>
-        </figure>
-        <section>
-          <h3>Developer Journal Application</h3>
-          <p>
+    <!-- HW5: Custom Element: Project Card -->
+    <!-- Projects Section 
+            Developer Journal Application
             A web application designed for developers to track progress and collaborate efficiently.
             It features interactive prototypes, a dynamic home page, and an intuitive note and search functionality.
-          </p>
-        </section>
-      </project-card>
-      
-      <!-- Another project as a standard article -->
-      <article>
-        <figure>
-          <picture>
-            <source media="(min-width: 900px)" srcset="images/carVersion2.jpg" type="image/jpeg" />
-            <source media="(min-width: 600px)" srcset="images/carVersion2.jpg" type="image/jpeg" />
-            <img src="images/carVersion2.jpg" alt="Line Following Robot" style="object-fit: cover; object-position: center;"/>
-          </picture>
-        </figure>
-        <section>
-          <h3>Line Following Robot</h3>
-          <p>
+            
+            Line Following Robot
             An autonomous robot that uses Arduino programming and robotics engineering to precisely follow lines.
-            This project improved performance and showcased strong teamwork and innovation.
-          </p>
-        </section>
-      </article>
+            This project improved performance and showcased strong teamwork and innovation.-->
+    <section id="projects">
+      <h2>Projects</h2>
+      <!-- Using custom element "project-card" for display projects -->
+      <!-- TODO -->
+      <!-- <script type="module" src="JS/project-card.js"></script> -->
+      <project-card></project-card>
+      <project-card></project-card>
+      <project-card></project-card>
     </section>
 
     <!-- Contact Me Section -->
@@ -144,7 +122,6 @@
         <li><a href="www.linkedin.com/in/pussakorn-chanpanichravee-13295129b" target="_blank">LinkedIn</a></li>
       </ul>
 
-      <!-- HW4 Part1: New Contact Form with Basic HTML and CSS -->
       <form action="https://httpbin.org/post" method="POST">
         <fieldset> 
           <legend>Introduce Yourself</legend>
@@ -177,11 +154,10 @@
       </form>
     </section>
 
-    <!-- HW4 Part 4: Dark & Light Theme Switcher  -->
     <button id="theme-toggle">🌙 Dark Mode</button>
 
     <script src="JS/main.js"></script>
-    
+    <script type="module" src="JS/project-card.js"></script>
 
     <!-- Footer -->
     <footer>
