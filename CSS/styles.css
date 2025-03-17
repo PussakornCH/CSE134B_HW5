@@ -277,7 +277,7 @@ project-card {
   padding: var(--project-card-padding);
   box-shadow: var(--project-card-shadow);
   margin: 0.5rem;
-  max-width: 70rem;
+  max-width: 50rem;
   width: 100%;
 }
 
