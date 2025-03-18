@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRUD Operations - Portfolio Projects</title>
+  <link rel="stylesheet" href="CSS/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Project CRUD Operations</h1>
+    <nav>
+      <!-- Include a link back to your main page -->
+      <a href="index.html">Back to Portfolio</a>
+    </nav>
+  </header>
+
+  <!-- Form for creating or updating a project -->
+  <section id="crud-form-section">
+    <h2>Add / Update Project</h2>
+    <form id="crud-form">
+      <input type="hidden" id="project-index" value="-1" /> <!-- For update mode -->
+      <label for="project-title">Title:</label>
+      <input type="text" id="project-title" required />
+      
+      <label for="project-imgSrc">Image URL:</label>
+      <input type="text" id="project-imgSrc" required />
+
+      <label for="project-altText">Alt Text:</label>
+      <input type="text" id="project-altText" required />
+
+      <label for="project-description">Description:</label>
+      <textarea id="project-description" required></textarea>
+
+      <label for="project-date">Date:</label>
+      <input type="date" id="project-date" required />
+
+      <button type="submit">Save Project</button>
+      <button type="button" id="reset-form">Reset</button>
+    </form>
+  </section>
+
+  <!-- Section for displaying current projects -->
+  <section id="crud-display-section">
+    <h2>Current Projects</h2>
+    <div id="projects-list"></div>
+  </section>
+
+  <script src="JS/crud.js"></script>
+</body>
+</html>
